@@ -198,6 +198,7 @@ case "$host_cpu" in
 		;;
 esac
 AM_CONDITIONAL([ARCH_X86],[test x"$ARCH" = x"X86"])
+AM_CONDITIONAL([ARCH_X86_64],[test x"$ARCH" = x"X86_64"])
 AC_MSG_CHECKING([system architecture])
 AC_MSG_RESULT([$ARCH])
 ])
@@ -216,6 +217,15 @@ if test x"$asm" = x"yes" ; then
 			AC_MSG_ERROR([cannot locate yasm, which is required for optimised builds on $host_cpu platforms])
 		fi
 		AS="$YASM"
+		ASFLAGS="$ASFLAGS $YASMFLAGS"
+	else
+## Todo: SPARC and arm assembly
+		asm=no
+	fi
+fi
+if test x"$asm" = x"yes" ; then
+	AC_DEFINE([ASM],[1],[Enable assembly optimizations on x86 and arm])
+	if test x"$ARCH" = x"X86" ; then
 		case "$CFLAGS" in
 			*-march*)
 				;;
@@ -230,14 +240,7 @@ if test x"$asm" = x"yes" ; then
 				CFLAGS="$CFLAGS -mfpmath=sse -msse"
 				;;
 		esac
-		ASFLAGS="$ASFLAGS $YASMFLAGS"
-	else
-## Todo: SPARC and arm assembly
-		asm=no
-	fi
-fi
-if test x"$asm" = x"yes" ; then
-	AC_DEFINE([ASM],[1],[Enable assembly optimizations on x86 and arm])
+	fi	
 	if test x"$ARCH" = x"X86" || test x"$ARCH" = x"X86_64" ; then
 ## Todo: Test compiler and assembler
 		AC_DEFINE([HAVE_MMX],[1],[define if MMX and SSE3 instructions are available])

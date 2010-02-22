@@ -18,7 +18,7 @@ X86ASRC_COMMON = common/x86/cabac-a.asm common/x86/dct-a.asm \
 	common/x86/sad-a.asm common/x86/cpu-a.asm
 
 X86ASRC = $(X86ASRC_COMMON) common/x86/dct-32.asm common/x86/pixel-32.asm
-X86_64ASRC = $(X86ASRC_COMMON) common/x86/dct-64.asm common/x86/pixel-64.asm
+X86_64ASRC = $(X86ASRC_COMMON) common/x86/dct-64.asm
 
 if VIS
 libx264_la_SOURCES += common/visualize.c common/display-x11.c
@@ -28,6 +28,13 @@ if ARCH_X86
 libx264_la_SOURCES += $(X86SRC)
 if ASM
 libx264_la_SOURCES += $(X86ASRC)
+endif
+endif
+
+if ARCH_X86_64
+libx264_la_SOURCES += $(X86SRC)
+if ASM
+libx264_la_SOURCES += $(X86_64ASRC)
 endif
 endif
 
