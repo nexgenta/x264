@@ -31,10 +31,12 @@
 
 #include "config.h"
 
+#ifdef HAVE_INTTYPES_H
+#include <inttypes.h>
+#endif
+
 #ifdef HAVE_STDINT_H
 #include <stdint.h>
-#else
-#include <inttypes.h>
 #endif
 
 #ifndef HAVE_LOG2F
