@@ -38,3 +38,5 @@ stamp-h2
 /configure
 /libtool
 /config.status
+/libx264.pc
+/libx264-uninstalled.pc

@@ -1,0 +1,10 @@
+prefix=
+exec_prefix=
+libdir=${pcfiledir}/
+includedir=${pcfiledir}/
+
+Name: libx264-@VERSION@ uninstalled
+Description: libx264 H.264 encoding library
+Version: @VERSION@
+Libs: -L${libdir} -lx264 @LIBS@
+Cflags: -I${includedir}

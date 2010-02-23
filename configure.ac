@@ -10,6 +10,9 @@ X264_VCS_COMMIT="781d300"
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 AM_MAINTAINER_MODE
 
+pkgconfigdir='$(libdir)/pkgconfig'
+AC_SUBST([pkgconfigdir])
+
 
 AC_DEFINE_UNQUOTED([X264_VERSION],[" r$X264_REVISION $X264_VCS_COMMIT"],[printable version string])
 AC_DEFINE_UNQUOTED([X264_POINTVER],["$VERSION $X264_VCS_COMMIT"],[major.minor version string])
@@ -62,6 +65,8 @@ __EOF__
 
 AC_CONFIG_FILES([
 Makefile
+libx264.pc
+libx264-uninstalled.pc
 ])
 
 AC_OUTPUT

@@ -1,0 +1,14 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+includedir=@includedir@
+toolsdir=${exec_prefix}/bin
+
+
+Name: libx264-@VERSION@
+Description: libx264 H.264 encoding library
+Version: @VERSION@
+Libs: -L${libdir} -lx264 @LIBS@
+Cflags: -I${includedir}
+
+

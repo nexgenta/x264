@@ -1,5 +1,11 @@
 SUFFIXES = .asm
 
+EXTRA_DIST = libx264.pc.in libx264-uninstalled.pc.in
+
+DISTCLEANFILES = libx264.pc libx264-uninstalled.pc
+
+pkgconfig_DATA = libx264.pc
+
 lib_LTLIBRARIES = libx264.la
 
 libx264_la_SOURCES = common/mc.c common/predict.c common/pixel.c \
